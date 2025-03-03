@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: Encryption
+Version: 0.0.1
+Summary: Basic text transformations
+Home-page: https://github.com/nasiegel8/Encryptions
+Author: Noah Siegel
+Author-email: nasiegel8@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+Ver 0.0.1:
+	Contains Caesar Cipher, Vigenere, Pig Latin, and Morse Code
+
+
+Email me at nasiegel8@gmail.com if you have a suggestion.
+
