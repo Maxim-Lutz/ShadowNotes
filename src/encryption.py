@@ -31,4 +31,4 @@ def decrypt_data(token: bytes, password: str) -> bytes:
         decrypted_data = f.decrypt(encrypted_data)
         return decrypted_data
     except InvalidToken:
-        raise ValueError("Falsches Passwort oder beschädigte Daten.")
+        raise ValueError("Incorrect password or corrupted data.")
