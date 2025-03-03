@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 
-# Definiert den Ordner für die Notizen
+# Define the directory for storing notes
 NOTES_DIR = os.path.join(os.path.dirname(__file__), "../notes")
 print("Notes directory:", NOTES_DIR)
 
@@ -10,7 +10,7 @@ if not os.path.exists(NOTES_DIR):
 
 def save_note(encrypted_data: bytes, custom_filename: str = None) -> str:
     if custom_filename:
-        # Falls der Dateiname nicht mit .enc endet, füge es hinzu
+        # If the filename does not end with .enc, add the extension
         if not custom_filename.endswith(".enc"):
             custom_filename += ".enc"
         filename = custom_filename
