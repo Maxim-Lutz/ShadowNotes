@@ -15,8 +15,11 @@ def main():
         elif command == "add":
             note_content = input("Enter note content: ")
             password = input("Enter password: ")
+            custom_filename = input("Enter a custom filename (or leave blank for default): ").strip()
+            if custom_filename == "":
+                custom_filename = None
             encrypted = encrypt_data(note_content.encode(), password)
-            filename = save_note(encrypted)
+            filename = save_note(encrypted, custom_filename)
             print("Note saved as", filename)
         elif command == "read":
             filename = input("Enter filename to read: ")
