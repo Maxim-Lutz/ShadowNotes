@@ -3,6 +3,7 @@ from datetime import datetime
 
 # Definiert den Ordner für die Notizen
 NOTES_DIR = os.path.join(os.path.dirname(__file__), "../notes")
+print("Notes directory:", NOTES_DIR)
 
 if not os.path.exists(NOTES_DIR):
     os.makedirs(NOTES_DIR)
