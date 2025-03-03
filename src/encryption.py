@@ -1,34 +1,33 @@
 import os
-from base64 import urlsafe_b64encode
-from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
-from cryptography.fernet import Fernet, InvalidToken
 
 def derive_key(password: str, salt: bytes) -> bytes:
     kdf = PBKDF2HMAC(
         algorithm=hashes.SHA256(),
-        length=32,
+        length=32,             # 256-bit key
         salt=salt,
-        iterations=100_000,
-        backend=default_backend()
+        iterations=100000
     )
-    return urlsafe_b64encode(kdf.derive(password.encode()))
+    return kdf.derive(password.encode())
 
 def encrypt_data(data: bytes, password: str) -> bytes:
     salt = os.urandom(16)
     key = derive_key(password, salt)
-    f = Fernet(key)
-    encrypted_data = f.encrypt(data)
-    return salt + encrypted_data
+    aesgcm = AESGCM(key)
+    nonce = os.urandom(12)  # 96-bit nonce for AES-GCM
+    ciphertext = aesgcm.encrypt(nonce, data, None)
+    # Return salt + nonce + ciphertext
+    return salt + nonce + ciphertext
 
 def decrypt_data(token: bytes, password: str) -> bytes:
     salt = token[:16]
-    encrypted_data = token[16:]
+    nonce = token[16:28]
+    ciphertext = token[28:]
     key = derive_key(password, salt)
-    f = Fernet(key)
+    aesgcm = AESGCM(key)
     try:
-        decrypted_data = f.decrypt(encrypted_data)
-        return decrypted_data
-    except InvalidToken:
-        raise ValueError("Incorrect password or corrupted data.")
+        return aesgcm.decrypt(nonce, ciphertext, None)
+    except Exception as e:
+        raise ValueError("Incorrect password or corrupted data") from e
