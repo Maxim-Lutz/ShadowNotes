@@ -1,36 +1,52 @@
-import argparse
+import os
 from encryption import encrypt_data, decrypt_data
-from storage import save_note, load_note
+from storage import save_note, load_note, NOTES_DIR
 
 def main():
-    parser = argparse.ArgumentParser(description="ShadowNotes CLI")
-    subparsers = parser.add_subparsers(dest="command", required=True)
-    
-    # Befehl zum Hinzufügen einer Notiz
-    add_parser = subparsers.add_parser("add", help="Add a new note")
-    add_parser.add_argument("content", type=str, help="The content of the note (in Markdown)")
-    
-    # Befehl zum Lesen einer Notiz
-    read_parser = subparsers.add_parser("read", help="Read a note")
-    read_parser.add_argument("filename", type=str, help="Filename of the note to read")
-    
-    args = parser.parse_args()
-    
-    if args.command == "add":
-        password = input("Enter password: ")
-        data = args.content.encode()
-        encrypted = encrypt_data(data, password)
-        filename = save_note(encrypted)
-        print(f"Note saved as {filename}")
-    elif args.command == "read":
-        password = input("Enter password: ")
-        encrypted = load_note(args.filename)
-        try:
-            decrypted = decrypt_data(encrypted, password)
-            print("Note content:")
-            print(decrypted.decode())
-        except ValueError as e:
-            print("Error:", e)
+    print("Welcome to ShadowNotes Interactive CLI")
+    print("Type 'help' to see available commands.\n")
+
+    while True:
+        command = input("Command (add, read, delete, list, exit): ").strip().lower()
+        if command == "exit":
+            break
+        elif command == "help":
+            print("Available commands: add, read, delete, list, exit")
+        elif command == "add":
+            note_content = input("Enter note content: ")
+            password = input("Enter password: ")
+            encrypted = encrypt_data(note_content.encode(), password)
+            filename = save_note(encrypted)
+            print("Note saved as", filename)
+        elif command == "read":
+            filename = input("Enter filename to read: ")
+            password = input("Enter password: ")
+            try:
+                encrypted = load_note(filename)
+                decrypted = decrypt_data(encrypted, password)
+                print("\nNote content:")
+                print(decrypted.decode(), "\n")
+            except Exception as e:
+                print("Error:", e)
+        elif command == "delete":
+            filename = input("Enter filename to delete: ")
+            filepath = os.path.join(NOTES_DIR, filename)
+            if os.path.exists(filepath):
+                os.remove(filepath)
+                print("Note deleted.")
+            else:
+                print("Note not found.")
+        elif command == "list":
+            files = os.listdir(NOTES_DIR)
+            if files:
+                print("Notes:")
+                for f in files:
+                    print(f)
+            else:
+                print("No notes found.")
+        else:
+            print("Unknown command. Type 'help' to see available commands.")
+    input("Press Enter to exit...")
 
 if __name__ == "__main__":
     main()
