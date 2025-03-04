@@ -1,0 +1,26 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment directories
+venv/
+.venv/
+
+# Distribution / packaging directories
+build/
+dist/
+*.egg-info/
+
+# PyInstaller spec files (if not needed to track)
+*.spec
+
+# OS generated files (e.g., macOS)
+.DS_Store
+
+# Editor/IDE specific files
+.vscode/
+.idea/
+
+# Optionally ignore the notes directory (if it's user-generated data)
+notes/

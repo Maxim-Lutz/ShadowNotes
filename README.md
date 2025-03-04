@@ -1,51 +1,63 @@
 ---
+
+```markdown
 # ShadowNotes
 
-ShadowNotes is a simple, encrypted note-taking application built in Python. It provides a command-line interactive interface for adding, reading, deleting, and listing encrypted notes. Notes are securely stored on your local machine, and you have the option to specify a custom file name when adding a note.
+ShadowNotes is a simple, encrypted note-taking application built in Python. It offers two versions for managing your notes securely:
+- A **Command-Line Interface (CLI)** version.
+- A **Graphical User Interface (GUI)** version (built with Tkinter).
+
+Both versions use AES-256 GCM for secure, authenticated encryption and support custom note filenames, tagging, and various note operations such as adding, reading, editing, deleting, searching, exporting, importing, and changing note passwords.
 
 ## Features
 
-- **Encryption:** Uses AES encryption (via the cryptography library) to secure your notes.
-- **Interactive CLI:** An easy-to-use command-line interface for managing notes.
-- **Custom Note Filenames:** When adding a note, you can specify your own file name. If no custom name is provided, a default timestamp-based name is used.
-- **Local Storage:** Notes are stored in an encrypted format in a dedicated folder.
-- **Future Enhancements:** Plans include a GUI version, synchronization options, and mobile support.
+- **Secure Encryption:** Uses AES-256 GCM for authenticated encryption.
+- **Dual Interfaces:** Choose between a CLI version and a GUI version.
+- **Custom Note Filenames:** Specify your own filename when adding a note; if omitted, a timestamp-based name is used.
+- **Tagging & JSON Format:** Notes are stored as JSON objects (with content and tags) before encryption.
+- **Note Operations:** Add, read, edit, delete, and search notes.
+- **Export/Import:** Export decrypted notes to plaintext and import plaintext files as encrypted notes.
+- **Change Password:** Update the encryption password for a note.
 
 ## Project Structure
 
 ```
 ShadowNotes/
-├── src/                # Source code
-│   ├── __init__.py     # Marks src as a Python module
-│   ├── main.py         # Interactive CLI (entry point)
-│   ├── encryption.py   # Encryption and decryption functions
-│   ├── storage.py      # File operations (saving, loading, custom filenames)
-│   └── config.py       # Configuration settings (optional)
-├── notes/              # Directory for storing encrypted notes
-├── tests/              # Unit tests
-├── docs/               # Documentation
-├── build.py            # Build script to create the executable
-├── requirements.txt    # Python dependencies (e.g., cryptography)
-├── setup.py            # Package setup file (if needed)
-└── README.md           # This file
+├── src/
+│   ├── __init__.py        # Marks the src directory as a Python package
+│   ├── config.py          # Configuration settings
+│   ├── main.py            # CLI entry point
+│   ├── gui.py             # GUI entry point (Tkinter)
+│   ├── encryption.py      # Encryption and decryption functions (AES-256 GCM)
+│   └── storage.py         # File operations for saving and loading notes
+├── notes/                 # Directory for storing encrypted notes
+├── tests/
+│   ├── __init__.py        # Marks tests as a Python package
+│   └── test_encryption.py # Unit tests for encryption functionality
+├── build.py               # Build script to create executables (CLI and GUI)
+├── requirements.txt       # Python dependencies
+├── .gitignore             # Git ignore file
+└── README.md              # Project documentation (this file)
 ```
 
-## Installation
+## Requirements
 
-### Requirements
 - Python 3.x
-- pip (Python package manager)
+- pip
 
-### Setup Steps
+## Setup
+
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/yourusername/ShadowNotes.git
+   git clone https://github.com/Maxim-Lutz/ShadowNotes.git
    cd ShadowNotes
    ```
+
 2. **Create a virtual environment:**
    ```sh
    python -m venv venv
    ```
+
 3. **Activate the virtual environment:**
    - **Windows:**
      ```sh
@@ -55,54 +67,43 @@ ShadowNotes/
      ```sh
      source venv/bin/activate
      ```
+
 4. **Install dependencies:**
    ```sh
    pip install -r requirements.txt
    ```
 
+## Building the Executables
+
+The project includes a build script that creates two separate executables:
+- **CLI Version:** `ShadowNotes.exe` – a command-line version of the app.
+- **GUI Version:** `ShadowNotesGui.exe` – a graphical version of the app built with Tkinter.
+
+To build the executables, run the following command from the project root:
+```sh
+python build.py
+```
+This will create the executables in the `dist/` folder.
+
 ## Usage
 
-### Running the Application
-Run the interactive CLI by executing:
+### Running the CLI Version
+Run the CLI executable (or run it via Python):
 ```sh
-python src/main.py
+ShadowNotes.exe
 ```
-If you build the executable (see below), you can simply run the generated `ShadowNotes.exe`.
+The CLI version will prompt you for commands (e.g., add, read, edit, delete, list, search, etc.).
 
-### Commands
-Once the application starts, you can use the following commands:
-- **add**: Add a new note.  
-  The CLI will prompt you for:
-  - Note content
-  - A password (used to encrypt the note)
-  - A custom filename (optional – if left blank, a default timestamp is used)
-- **read**: Read an existing note by entering its filename.
-- **delete**: Delete a note by specifying its filename.
-- **list**: List all stored notes.
-- **exit**: Exit the application.
-
-## Building the Executable
-
-You can create a standalone executable using PyInstaller. A build script is provided.
-
-### Using the Build Script
-1. Make sure your virtual environment is activated.
-2. Run the build script:
-   ```sh
-   python build.py
-   ```
-   This script uses PyInstaller with the following options:
-   - `--onefile`: Creates a single executable.
-   - `--console`: Opens a console window.
-   - `--name ShadowNotes`: Names the executable as ShadowNotes.exe.
-   - `--paths=src`: Adds the src folder to the Python path.
-
-The resulting executable will be placed in the `dist/` folder.
+### Running the GUI Version
+Run the GUI executable:
+```sh
+ShadowNotesGui.exe
+```
+This will open a graphical window where you can manage your notes interactively.
 
 ## License
 
 ShadowNotes is open-source and released under the MIT License.
+```
 
 ---
-
-Feel free to contribute or provide feedback to help improve the project!
