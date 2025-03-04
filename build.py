@@ -33,14 +33,14 @@ def main():
     gui_exe = os.path.join("dist", "ShadowNotesGui.exe")
     
     if os.path.exists(cli_exe):
-        print("CLI Build complete. 'ShadowNotes.exe' has been created in the 'dist' folder.")
+        print("CLI build complete: 'ShadowNotes.exe' created in the 'dist' folder.")
     else:
-        print("CLI Build complete, but 'ShadowNotes.exe' was not found in the 'dist' folder.")
+        print("CLI build complete, but 'ShadowNotes.exe' was not found in 'dist'.")
     
     if os.path.exists(gui_exe):
-        print("GUI Build complete. 'ShadowNotesGui.exe' has been created in the 'dist' folder.")
+        print("GUI build complete: 'ShadowNotesGui.exe' created in the 'dist' folder.")
     else:
-        print("GUI Build complete, but 'ShadowNotesGui.exe' was not found in the 'dist' folder.")
+        print("GUI build complete, but 'ShadowNotesGui.exe' was not found in 'dist'.")
 
 if __name__ == "__main__":
     main()
