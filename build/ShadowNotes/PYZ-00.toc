@@ -286,6 +286,7 @@
    'C:\\Users\\Maxim '
    'Lutz\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\gettext.py',
    'PYMODULE'),
+  ('gui', 'C:\\Dev\\ShadowNotes\\src\\gui.py', 'PYMODULE'),
   ('gzip',
    'C:\\Users\\Maxim '
    'Lutz\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\gzip.py',
@@ -498,6 +499,34 @@
   ('threading',
    'C:\\Users\\Maxim '
    'Lutz\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\threading.py',
+   'PYMODULE'),
+  ('tkinter',
+   'C:\\Users\\Maxim '
+   'Lutz\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\tkinter\\__init__.py',
+   'PYMODULE'),
+  ('tkinter.commondialog',
+   'C:\\Users\\Maxim '
+   'Lutz\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\tkinter\\commondialog.py',
+   'PYMODULE'),
+  ('tkinter.constants',
+   'C:\\Users\\Maxim '
+   'Lutz\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\tkinter\\constants.py',
+   'PYMODULE'),
+  ('tkinter.dialog',
+   'C:\\Users\\Maxim '
+   'Lutz\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\tkinter\\dialog.py',
+   'PYMODULE'),
+  ('tkinter.filedialog',
+   'C:\\Users\\Maxim '
+   'Lutz\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\tkinter\\filedialog.py',
+   'PYMODULE'),
+  ('tkinter.messagebox',
+   'C:\\Users\\Maxim '
+   'Lutz\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\tkinter\\messagebox.py',
+   'PYMODULE'),
+  ('tkinter.simpledialog',
+   'C:\\Users\\Maxim '
+   'Lutz\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\tkinter\\simpledialog.py',
    'PYMODULE'),
   ('token',
    'C:\\Users\\Maxim '
