@@ -1,4 +1,3 @@
----
 
 ```markdown
 # ShadowNotes
@@ -105,5 +104,3 @@ This will open a graphical window where you can manage your notes interactively.
 
 ShadowNotes is open-source and released under the MIT License.
 ```
-
----
