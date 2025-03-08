@@ -20,7 +20,7 @@ Both versions use AES-256 GCM for secure, authenticated encryption and support c
 
 ## Project Structure
 
-```
+
 ShadowNotes/
 ├── src/
 │   ├── __init__.py        # Marks the src directory as a Python package
@@ -37,7 +37,6 @@ ShadowNotes/
 ├── requirements.txt       # Python dependencies
 ├── .gitignore             # Git ignore file
 └── README.md              # Project documentation (this file)
-```
 
 ## Requirements
 
